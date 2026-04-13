@@ -18,7 +18,7 @@ import com.ecom.eventservice.service.RegistrationService;
 
 @RestController
 @RequestMapping("/event")
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class EventController {
 
     @Autowired

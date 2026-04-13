@@ -9,7 +9,7 @@ import com.ecom.facultyservice.service.FacultyService;
 
 @RestController
 @RequestMapping("/faculty")
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class FacultyController {
 
     @Autowired
