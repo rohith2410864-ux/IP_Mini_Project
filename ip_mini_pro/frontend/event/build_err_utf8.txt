@@ -1,0 +1,270 @@
+﻿
+> event@0.0.0 build
+> tsc -b && vite build
+
+src/pages/EventDetails.tsx(2,8): error TS6133: 'React' is declared but its value is never read.
+src/pages/EventDetails.tsx(18,28): error TS7006: Parameter 'type' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(28,29): error TS7006: Parameter 'type' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(48,45): error TS7006: Parameter 'field' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(50,15): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(52,15): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(54,13): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(61,30): error TS7006: Parameter 'r' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(71,30): error TS7006: Parameter 'label' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(71,37): error TS7006: Parameter 'value' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(74,9): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(79,33): error TS7006: Parameter 'label' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(79,40): error TS7006: Parameter 'option' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(79,48): error TS7006: Parameter 'checked' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(81,29): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(85,57): error TS7006: Parameter 'v' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(89,9): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(94,23): error TS7006: Parameter 'label' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(99,26): error TS7006: Parameter 'label' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(100,17): error TS2339: Property 'customFormFields' does not exist on type 'never'.
+src/pages/EventDetails.tsx(102,25): error TS2339: Property 'customFormFields' does not exist on type 'never'.
+src/pages/EventDetails.tsx(102,47): error TS7006: Parameter 'f' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(105,19): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(132,16): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/EventDetails.tsx(133,14): error TS2339: Property 'externalLink' does not exist on type '{}'.
+src/pages/EventDetails.tsx(133,73): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/EventDetails.tsx(137,16): error TS2339: Property 'customFormFields' does not exist on type 'never'.
+src/pages/EventDetails.tsx(138,7): error TS18047: 'event' is possibly 'null'.
+src/pages/EventDetails.tsx(138,38): error TS7006: Parameter 'field' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(140,25): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(143,13): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(147,13): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(151,13): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(155,13): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(166,31): error TS7006: Parameter 'orderData' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(172,47): error TS2339: Property 'title' does not exist on type 'never'.
+src/pages/EventDetails.tsx(174,32): error TS7006: Parameter 'response' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(189,28): error TS2339: Property 'Razorpay' does not exist on type 'Window & typeof globalThis'.
+src/pages/EventDetails.tsx(193,32): error TS7006: Parameter 'paymentResponse' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(193,49): error TS7006: Parameter 'orderId' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(210,48): error TS18046: 'err' is of type 'unknown'.
+src/pages/EventDetails.tsx(210,79): error TS18046: 'err' is of type 'unknown'.
+src/pages/EventDetails.tsx(233,16): error TS2339: Property 'isPaid' does not exist on type 'never'.
+src/pages/EventDetails.tsx(233,33): error TS2339: Property 'amount' does not exist on type 'never'.
+src/pages/EventDetails.tsx(235,37): error TS2339: Property 'amount' does not exist on type 'never'.
+src/pages/EventDetails.tsx(238,26): error TS2339: Property '_id' does not exist on type 'never'.
+src/pages/EventDetails.tsx(244,51): error TS18046: 'err' is of type 'unknown'.
+src/pages/EventDetails.tsx(244,82): error TS18046: 'err' is of type 'unknown'.
+src/pages/EventDetails.tsx(253,39): error TS7006: Parameter 'paymentId' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(285,13): error TS18046: 'err' is of type 'unknown'.
+src/pages/EventDetails.tsx(303,30): error TS7006: Parameter 'field' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(304,19): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(305,22): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(305,55): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(336,18): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(352,36): error TS7006: Parameter 'opt' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(352,41): error TS7006: Parameter 'i' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(358,18): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(368,36): error TS7006: Parameter 'opt' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(368,41): error TS7006: Parameter 'i' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(386,18): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(396,36): error TS7006: Parameter 'opt' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(396,41): error TS7006: Parameter 'i' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(412,18): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(436,18): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(455,18): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(474,18): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(492,18): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(504,30): error TS18047: 'e.target.files' is possibly 'null'.
+src/pages/EventDetails.tsx(520,18): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(539,18): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(550,15): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/EventDetails.tsx(552,15): error TS2339: Property 'customFormFields' does not exist on type 'never'.
+src/pages/EventDetails.tsx(553,33): error TS2339: Property 'customFormFields' does not exist on type 'never'.
+src/pages/EventDetails.tsx(555,25): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/pages/EventDetails.tsx(590,29): error TS2339: Property 'posterUrl' does not exist on type 'never'.
+src/pages/EventDetails.tsx(590,54): error TS2339: Property 'posterUrl' does not exist on type 'never'.
+src/pages/EventDetails.tsx(595,22): error TS2339: Property 'category' does not exist on type 'never'.
+src/pages/EventDetails.tsx(597,119): error TS2339: Property 'title' does not exist on type 'never'.
+src/pages/EventDetails.tsx(604,116): error TS2339: Property 'description' does not exist on type 'never'.
+src/pages/EventDetails.tsx(609,75): error TS2339: Property 'registrationDeadline' does not exist on type 'never'.
+src/pages/EventDetails.tsx(609,113): error TS2339: Property 'registrationDeadline' does not exist on type 'never'.
+src/pages/EventDetails.tsx(613,75): error TS2339: Property 'isTeamEvent' does not exist on type 'never'.
+src/pages/EventDetails.tsx(613,104): error TS2339: Property 'minTeamSize' does not exist on type 'never'.
+src/pages/EventDetails.tsx(613,125): error TS2339: Property 'maxTeamSize' does not exist on type 'never'.
+src/pages/EventDetails.tsx(617,75): error TS2339: Property 'maxSeats' does not exist on type 'never'.
+src/pages/EventDetails.tsx(617,96): error TS2339: Property 'maxSeats' does not exist on type 'never'.
+src/pages/EventDetails.tsx(621,75): error TS2339: Property 'departments' does not exist on type 'never'.
+src/pages/EventDetails.tsx(621,107): error TS2339: Property 'departments' does not exist on type 'never'.
+src/pages/EventDetails.tsx(628,24): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/EventDetails.tsx(643,46): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/EventDetails.tsx(643,81): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/EventDetails.tsx(644,30): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/EventDetails.tsx(647,77): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/EventDetails.tsx(650,35): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/EventDetails.tsx(664,95): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/EventDetails.tsx(670,24): error TS2339: Property 'customFormFields' does not exist on type 'never'.
+src/pages/EventDetails.tsx(673,28): error TS2339: Property 'customFormFields' does not exist on type 'never'.
+src/pages/EventDetails.tsx(673,50): error TS7006: Parameter 'field' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(673,57): error TS7006: Parameter 'index' implicitly has an 'any' type.
+src/pages/EventDetails.tsx(691,24): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/EventDetails.tsx(693,33): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/EventDetails.tsx(698,52): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/EventDetails.tsx(707,47): error TS2339: Property 'type' does not exist on type 'never'.
+src/pages/EventDetails.tsx(707,62): error TS2339: Property 'type' does not exist on type 'never'.
+src/pages/EventDetails.tsx(708,98): error TS2339: Property 'category' does not exist on type 'never'.
+src/pages/EventDetails.tsx(711,50): error TS2339: Property 'venue' does not exist on type 'never'.
+src/pages/EventDetails.tsx(712,58): error TS2339: Property 'startDate' does not exist on type 'never'.
+src/pages/EventDetails.tsx(713,49): error TS2339: Property 'time' does not exist on type 'never'.
+src/pages/EventDetails.tsx(715,20): error TS2339: Property 'isTeamEvent' does not exist on type 'never'.
+src/pages/EventDetails.tsx(716,56): error TS2339: Property 'minTeamSize' does not exist on type 'never'.
+src/pages/EventDetails.tsx(716,78): error TS2339: Property 'maxTeamSize' does not exist on type 'never'.
+src/pages/EventDetails.tsx(720,47): error TS2339: Property 'isPaid' does not exist on type 'never'.
+src/pages/EventDetails.tsx(721,60): error TS2339: Property 'amount' does not exist on type 'never'.
+src/pages/EventDetails.tsx(726,20): error TS2339: Property 'paymentInfo' does not exist on type 'never'.
+src/pages/EventDetails.tsx(729,57): error TS2339: Property 'paymentInfo' does not exist on type 'never'.
+src/pages/EventDetails.tsx(750,25): error TS2339: Property 'isPaid' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(2,8): error TS6133: 'React' is declared but its value is never read.
+src/pages/ManageEvents.tsx(70,37): error TS2339: Property 'title' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(74,37): error TS2339: Property 'type' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(74,60): error TS2339: Property 'departments' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(74,77): error TS2339: Property 'departments' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(78,13): error TS2339: Property 'type' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(78,24): error TS2339: Property 'type' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(78,39): error TS2339: Property 'type' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(79,23): error TS2339: Property 'departments' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(80,23): error TS2339: Property 'departments' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(82,16): error TS2339: Property 'title' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(82,38): error TS2339: Property 'title' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(87,25): error TS7006: Parameter 'e' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(105,29): error TS7006: Parameter 'dept' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(106,13): error TS2345: Argument of type '(prev: { title: string; description: string; type: string; departments: never[]; category: string; startDate: string; endDate: string; time: string; venue: string; registrationDeadline: string; maxSeats: number; ... 9 more ...; customFormFields: never[]; }) => { ...; }' is not assignable to parameter of type 'SetStateAction<{ title: string; description: string; type: string; departments: never[]; category: string; startDate: string; endDate: string; time: string; venue: string; registrationDeadline: string; maxSeats: number; ... 9 more ...; customFormFields: never[]; }>'.
+  Type '(prev: { title: string; description: string; type: string; departments: never[]; category: string; startDate: string; endDate: string; time: string; venue: string; registrationDeadline: string; maxSeats: number; ... 9 more ...; customFormFields: never[]; }) => { ...; }' is not assignable to type '(prevState: { title: string; description: string; type: string; departments: never[]; category: string; startDate: string; endDate: string; time: string; venue: string; registrationDeadline: string; maxSeats: number; ... 9 more ...; customFormFields: never[]; }) => { ...; }'.
+    Call signature return types '{ departments: any[]; title: string; description: string; type: string; category: string; startDate: string; endDate: string; time: string; venue: string; registrationDeadline: string; maxSeats: number; ... 9 more ...; customFormFields: never[]; }' and '{ title: string; description: string; type: string; departments: never[]; category: string; startDate: string; endDate: string; time: string; venue: string; registrationDeadline: string; maxSeats: number; ... 9 more ...; customFormFields: never[]; }' are incompatible.
+      The types of 'departments' are incompatible between these types.
+        Type 'any[]' is not assignable to type 'never[]'.
+          Type 'any' is not assignable to type 'never'.
+src/pages/ManageEvents.tsx(108,46): error TS2345: Argument of type 'any' is not assignable to parameter of type 'never'.
+src/pages/ManageEvents.tsx(115,30): error TS7006: Parameter 'e' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(119,51): error TS2322: Type 'string | ArrayBuffer | null' is not assignable to type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/pages/ManageEvents.tsx(128,9): error TS2322: Type '{ label: string; fieldType: string; required: boolean; options: never[]; }' is not assignable to type 'never'.
+src/pages/ManageEvents.tsx(129,9): error TS2322: Type '{ label: string; fieldType: string; required: false; options: never[]; }' is not assignable to type 'never'.
+src/pages/ManageEvents.tsx(139,30): error TS7006: Parameter 'index' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(139,37): error TS7006: Parameter 'key' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(139,42): error TS7006: Parameter 'value' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(145,7): error TS2322: Type 'any' is not assignable to type 'never'.
+src/pages/ManageEvents.tsx(146,9): error TS2698: Spread types may only be created from object types.
+src/pages/ManageEvents.tsx(149,55): error TS2339: Property 'options' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(153,7): error TS2322: Type 'any' is not assignable to type 'never'.
+src/pages/ManageEvents.tsx(154,9): error TS2698: Spread types may only be created from object types.
+src/pages/ManageEvents.tsx(162,27): error TS7006: Parameter 'index' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(164,31): error TS2339: Property 'options' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(165,28): error TS2339: Property 'options' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(167,26): error TS2339: Property 'options' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(171,30): error TS7006: Parameter 'fieldIndex' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(171,42): error TS7006: Parameter 'optionIndex' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(171,55): error TS7006: Parameter 'value' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(173,36): error TS2339: Property 'options' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(174,33): error TS2339: Property 'options' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(176,31): error TS2339: Property 'options' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(180,30): error TS7006: Parameter 'fieldIndex' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(180,42): error TS7006: Parameter 'optionIndex' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(182,31): error TS2339: Property 'options' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(182,67): error TS2339: Property 'options' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(182,83): error TS7006: Parameter '_' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(182,86): error TS7006: Parameter 'idx' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(186,30): error TS7006: Parameter 'index' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(191,31): error TS7006: Parameter 'e' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(202,20): error TS2339: Property 'label' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(206,60): error TS2339: Property 'fieldType' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(206,82): error TS2339: Property 'options' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(206,99): error TS2339: Property 'options' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(206,129): error TS2339: Property 'options' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(206,143): error TS7006: Parameter 'opt' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(207,39): error TS2339: Property 'label' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(237,24): error TS2339: Property 'label' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(238,28): error TS2339: Property 'fieldType' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(239,27): error TS2339: Property 'required' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(240,26): error TS2339: Property 'options' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(240,42): error TS2339: Property 'options' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(240,57): error TS7006: Parameter 'opt' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(259,26): error TS18046: 'err' is of type 'unknown'.
+src/pages/ManageEvents.tsx(259,57): error TS18046: 'err' is of type 'unknown'.
+src/pages/ManageEvents.tsx(263,23): error TS7006: Parameter 'event' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(263,30): error TS7006: Parameter 'e' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(278,60): error TS7006: Parameter 'field' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(288,31): error TS7006: Parameter 'id' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(288,35): error TS7006: Parameter 'e' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(296,28): error TS7006: Parameter 'type' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(330,93): error TS2322: Type 'string' is not assignable to type 'number'.
+src/pages/ManageEvents.tsx(358,60): error TS2345: Argument of type 'string' is not assignable to parameter of type 'never'.
+src/pages/ManageEvents.tsx(539,35): error TS2339: Property 'required' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(544,34): error TS2339: Property 'label' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(550,34): error TS2339: Property 'fieldType' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(565,39): error TS2339: Property 'required' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(572,38): error TS2339: Property 'required' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(574,67): error TS2339: Property 'label' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(581,41): error TS2339: Property 'required' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(582,36): error TS2339: Property 'required' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(584,30): error TS2339: Property 'required' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(598,65): error TS2339: Property 'fieldType' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(605,29): error TS2339: Property 'options' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(605,49): error TS7006: Parameter 'option' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(605,57): error TS7006: Parameter 'optIndex' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(635,30): error TS2339: Property 'fieldType' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(636,30): error TS2339: Property 'fieldType' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(638,30): error TS2339: Property 'required' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(644,24): error TS2339: Property 'required' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(701,24): error TS2339: Property '_id' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(710,20): error TS2339: Property 'posterUrl' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(711,33): error TS2339: Property 'posterUrl' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(716,50): error TS2339: Property 'type' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(717,27): error TS2339: Property 'type' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(717,65): error TS2339: Property 'departments' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(719,25): error TS2339: Property 'isTeamEvent' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(721,39): error TS2339: Property 'minTeamSize' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(721,59): error TS2339: Property 'maxTeamSize' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(724,89): error TS2339: Property 'status' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(724,145): error TS2339: Property 'status' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(725,28): error TS2339: Property 'status' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(727,25): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(730,40): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(731,35): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(732,36): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(737,45): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(737,72): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(738,29): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(739,29): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(740,29): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(743,25): error TS2339: Property 'customFormFields' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(745,32): error TS2339: Property 'customFormFields' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(745,56): error TS7006: Parameter 'f' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(749,88): error TS2339: Property 'title' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(751,43): error TS2339: Property 'startDate' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(752,34): error TS2339: Property 'venue' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(753,34): error TS2339: Property 'isPaid' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(753,53): error TS2339: Property 'amount' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(759,58): error TS2339: Property '_id' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(771,28): error TS2339: Property 'posterUrl' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(771,65): error TS2339: Property 'posterUrl' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(774,67): error TS2339: Property 'title' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(776,62): error TS2339: Property 'category' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(777,58): error TS2339: Property 'type' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(777,81): error TS2339: Property 'type' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(778,33): error TS2339: Property 'isTeamEvent' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(779,120): error TS2339: Property 'minTeamSize' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(779,151): error TS2339: Property 'maxTeamSize' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(783,81): error TS2339: Property 'description' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(785,30): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(788,52): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(788,87): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(789,36): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(792,41): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(807,36): error TS2339: Property 'externalLink' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(813,30): error TS2339: Property 'customFormFields' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(816,34): error TS2339: Property 'customFormFields' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(816,56): error TS7006: Parameter 'field' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(816,63): error TS7006: Parameter 'idx' implicitly has an 'any' type.
+src/pages/ManageEvents.tsx(836,62): error TS2339: Property 'venue' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(837,61): error TS2339: Property 'time' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(838,70): error TS2339: Property 'startDate' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(839,63): error TS2339: Property 'isPaid' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(839,90): error TS2339: Property 'amount' does not exist on type 'never'.
+src/pages/ManageEvents.tsx(840,62): error TS2339: Property 'departments' does not exist on type 'never'.
+src/services/StudentService.ts(2,15): error TS6196: 'AuthUser' is declared but never used.

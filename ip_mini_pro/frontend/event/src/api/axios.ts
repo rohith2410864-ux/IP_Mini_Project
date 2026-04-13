@@ -1,12 +1,12 @@
 import axios, { type AxiosInstance, type InternalAxiosRequestConfig } from 'axios';
 
-// 1. Environment variables with cleaning to prevent trailing slash issues
-const API_GATEWAY_URL = import.meta.env.VITE_API_GATEWAY_URL?.replace(/\/$/, '');
-const EVENT_SERVICE_URL = import.meta.env.VITE_EVENT_SERVICE_URL?.replace(/\/$/, '') || 'http://localhost:8083';
-const STUDENT_SERVICE_URL = import.meta.env.VITE_STUDENT_SERVICE_URL?.replace(/\/$/, '') || 'http://localhost:8082';
-const FACULTY_SERVICE_URL = import.meta.env.VITE_FACULTY_SERVICE_URL?.replace(/\/$/, '') || 'http://localhost:8081';
+// Environment variables fallback to typical local ports if not defined.
+const API_GATEWAY_URL = import.meta.env.VITE_API_GATEWAY_URL;
+const EVENT_SERVICE_URL = import.meta.env.VITE_EVENT_SERVICE_URL || 'http://localhost:8083';
+const STUDENT_SERVICE_URL = import.meta.env.VITE_STUDENT_SERVICE_URL || 'http://localhost:8082';
+const FACULTY_SERVICE_URL = import.meta.env.VITE_FACULTY_SERVICE_URL || 'http://localhost:8081';
 
-// 2. Helper to determine the correct base URL
+// Helper to determine the correct base URL
 const getBaseURL = (service: 'event' | 'student' | 'faculty' | 'gateway' = 'gateway') => {
     if (service === 'gateway' && API_GATEWAY_URL) return API_GATEWAY_URL;
     switch (service) {
@@ -20,21 +20,17 @@ const getBaseURL = (service: 'event' | 'student' | 'faculty' | 'gateway' = 'gate
 const createApiInstance = (service: 'event' | 'student' | 'faculty' | 'gateway'): AxiosInstance => {
     const instance = axios.create({
         baseURL: getBaseURL(service),
-        timeout: 30000, // 30 seconds: Crucial for Render free-tier wake-up time
         headers: {
             'Content-Type': 'application/json',
         }
     });
 
-    // Request Interceptor: Auth & URL Mapping
     instance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
         const token = localStorage.getItem('token');
         if (token) {
             config.headers = config.headers ?? {};
             (config.headers as Record<string, string>).Authorization = `Bearer ${token}`;
         }
-
-        // Logic for Event Service URL prefixing
         if (typeof config.url === 'string' && service === 'event') {
             if (config.url === '/events') config.url = '/event/events';
             else if (config.url.startsWith('/events/')) config.url = `/event${config.url}`;
@@ -42,7 +38,6 @@ const createApiInstance = (service: 'event' | 'student' | 'faculty' | 'gateway')
             else if (config.url === '/registrations') config.url = '/event/registrations';
             else if (config.url.startsWith('/payments/')) config.url = '/event/unsupported-payments';
 
-            // Data Mapping for Writes
             const isEventWrite = config.method && ['post', 'put', 'patch'].includes(config.method.toLowerCase());
             if (isEventWrite && typeof config.data === 'object' && config.data) {
                 const data = config.data as Record<string, unknown>;
@@ -69,7 +64,6 @@ const createApiInstance = (service: 'event' | 'student' | 'faculty' | 'gateway')
         return config;
     });
 
-    // Response Interceptor: Data Normalization
     instance.interceptors.response.use((response) => {
         if (service !== 'event') return response;
 
@@ -122,31 +116,29 @@ const createApiInstance = (service: 'event' | 'student' | 'faculty' | 'gateway')
             /\/event\/[^/]+$/.test(responseUrl);
 
         if (isRegistrationResponse) {
-            response.data = Array.isArray(response.data) 
-                ? response.data.map(mapRegistration) 
-                : mapRegistration(response.data);
+            if (Array.isArray(response.data)) {
+                response.data = response.data.map(mapRegistration);
+            } else {
+                response.data = mapRegistration(response.data);
+            }
             return response;
         }
 
         if (isEventResponse) {
-            response.data = Array.isArray(response.data) 
-                ? response.data.map(mapEvent) 
-                : mapEvent(response.data);
+            if (Array.isArray(response.data)) {
+                response.data = response.data.map(mapEvent);
+            } else {
+                response.data = mapEvent(response.data);
+            }
         }
         return response;
-    }, (error) => {
-        // Optional: Global error handling (e.g., logging out on 401)
-        if (error.response?.status === 401) {
-            console.warn("Unauthorized! Redirecting to login or clearing token...");
-        }
-        return Promise.reject(error);
     });
 
     return instance;
 };
 
-// Export pre-configured instances
-export const api = createApiInstance('event'); 
+// Export pre-configured instances for different services if an API gateway is not present
+export const api = createApiInstance('event'); // Main app currently talks directly to event-service
 export const eventApi = createApiInstance('event');
 export const studentApi = createApiInstance('student');
 export const facultyApi = createApiInstance('faculty');

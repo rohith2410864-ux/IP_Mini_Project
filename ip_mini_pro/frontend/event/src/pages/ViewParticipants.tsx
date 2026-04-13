@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+
 import { api } from '../api/axios';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
@@ -39,7 +40,6 @@ const ViewParticipants = () => {
     const map: Record<string, Event> = {};
     for (const r of registrations) {
       const eventObj = r.eventId;
-      // Added safety check for eventObj existence
       if (eventObj && typeof eventObj === 'object' && eventObj._id) {
         if (!map[eventObj._id]) {
           map[eventObj._id] = eventObj;
@@ -71,11 +71,7 @@ const ViewParticipants = () => {
 
   const participants: Registration[] = useMemo(() => {
     return registrations
-      .filter((r) => {
-        // FIXED: Added optional chaining to r.eventId?._id
-        const regEventId = r.eventId?._id;
-        return selectedEvent ? regEventId === selectedEvent._id : false;
-      })
+      .filter((r) => (selectedEvent ? r.eventId._id === selectedEvent._id : false))
       .filter((r) => {
         const name = r.userId?.name?.toLowerCase() || '';
         const matchesName = name.includes(studentSearch.toLowerCase());
@@ -237,8 +233,7 @@ const ViewParticipants = () => {
                         marginRight: '10px',
                       }}
                     >
-                      {/* FIXED: Added optional chaining here to prevent the crash at line 239/236 */}
-                      {registrations.filter((r) => r.eventId?._id === event._id).length} Registered
+                      {registrations.filter((r) => r.eventId._id === event._id).length} Registered
                     </span>
                     <button onClick={() => setSelectedEvent(event)} style={selectBtn}>
                       View Participants
@@ -356,20 +351,51 @@ const ViewParticipants = () => {
   );
 };
 
-// --- STYLES (Unchanged) ---
-const containerStyle: CSSProperties = { padding: '40px', background: '#f8fafc', minHeight: '100vh', fontFamily: 'sans-serif' };
+const containerStyle: CSSProperties = {
+  padding: '40px',
+  background: '#f8fafc',
+  minHeight: '100vh',
+  fontFamily: 'sans-serif',
+};
 const headerStyle: CSSProperties = { display: 'flex', justifyContent: 'space-between', marginBottom: '30px' };
 const titleStyle: CSSProperties = { margin: 0, fontSize: '24px', fontWeight: 'bold', color: '#1e293b' };
 const subtitleStyle: CSSProperties = { margin: 0, color: '#64748b' };
 const centerMsg: CSSProperties = { padding: '100px', textAlign: 'center', fontSize: '18px' };
-const filterCard: CSSProperties = { display: 'flex', gap: '15px', background: '#fff', padding: '15px', borderRadius: '12px', marginBottom: '30px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' };
+const filterCard: CSSProperties = {
+  display: 'flex',
+  gap: '15px',
+  background: '#fff',
+  padding: '15px',
+  borderRadius: '12px',
+  marginBottom: '30px',
+  boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+};
 const inputStyle: CSSProperties = { flex: 2, padding: '10px', borderRadius: '8px', border: '1px solid #e2e8f0' };
 const selectStyle: CSSProperties = { flex: 1, padding: '10px', borderRadius: '8px', border: '1px solid #e2e8f0' };
 const listWrapper: CSSProperties = { display: 'flex', flexDirection: 'column', gap: '15px' };
-const listRow: CSSProperties = { display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#fff', padding: '15px 20px', borderRadius: '12px', boxShadow: '0 2px 6px rgba(0,0,0,0.05)', border: '1px solid #f1f5f9' };
+const listRow: CSSProperties = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  background: '#fff',
+  padding: '15px 20px',
+  borderRadius: '12px',
+  boxShadow: '0 2px 6px rgba(0,0,0,0.05)',
+  border: '1px solid #f1f5f9',
+};
 const rowLeft: CSSProperties = { display: 'flex', alignItems: 'center', gap: '20px' };
 const rowThumb: CSSProperties = { width: '60px', height: '60px', borderRadius: '8px', objectFit: 'cover' };
-const thumbFallback: CSSProperties = { width: '60px', height: '60px', borderRadius: '8px', background: '#f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', color: '#94a3b8' };
+const thumbFallback: CSSProperties = {
+  width: '60px',
+  height: '60px',
+  borderRadius: '8px',
+  background: '#f1f5f9',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontSize: '10px',
+  color: '#94a3b8',
+};
 const rowInfo: CSSProperties = { display: 'flex', flexDirection: 'column', gap: '4px' };
 const rowTitle: CSSProperties = { margin: 0, fontSize: '18px', color: '#0f172a', fontWeight: 'bold' };
 const rowMeta: CSSProperties = { fontSize: '13px', color: '#64748b' };
@@ -393,3 +419,4 @@ const resBadge: CSSProperties = { fontSize: '11px', background: '#f8fafc', paddi
 const emptyMsg: CSSProperties = { padding: '40px', color: '#94a3b8', textAlign: 'center', width: '100%' };
 
 export default ViewParticipants;
+
