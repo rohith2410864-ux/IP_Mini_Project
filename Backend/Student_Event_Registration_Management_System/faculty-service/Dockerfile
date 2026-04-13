@@ -1,0 +1,13 @@
+# Stage 1: Build
+FROM maven:3.9.6-eclipse-temurin-21 AS build
+WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
+
+# Stage 2: Runtime
+FROM eclipse-temurin:21-jdk-jammy
+WORKDIR /app
+# This line copies the specific jar and renames it to app.jar
+COPY --from=build /app/target/faculty-service-0.0.1-SNAPSHOT.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
