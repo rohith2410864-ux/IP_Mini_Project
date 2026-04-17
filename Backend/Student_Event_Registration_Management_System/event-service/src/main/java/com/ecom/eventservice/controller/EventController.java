@@ -11,6 +11,8 @@ import java.util.Map;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.Base64;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.ecom.eventservice.model.EventModel;
 import com.ecom.eventservice.model.RegistrationModel;
