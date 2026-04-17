@@ -12,6 +12,8 @@ export type ProtectedRouteProps = {
 const roleToLoginPath: Record<Role, string> = {
   admin: '/admin/login',
   user: '/login',
+  faculty: '/admin/login',
+  student: '/login',
 };
 
 const ProtectedRoute = ({

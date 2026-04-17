@@ -27,7 +27,7 @@ const UserLoginPage = () => {
 
     try {
       const user = await loginUser(form);
-      if (user.role !== 'user') {
+      if (user.role !== 'user' && user.role !== 'student') {
         setError('Only student accounts can sign in here.');
         return;
       }

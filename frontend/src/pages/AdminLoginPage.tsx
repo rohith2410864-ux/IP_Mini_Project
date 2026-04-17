@@ -27,7 +27,7 @@ const AdminLoginPage = () => {
 
     try {
       const user = await loginAdmin(form);
-      if (user.role !== 'admin') {
+      if (user.role !== 'admin' && user.role !== 'faculty') {
         setError('Only admin accounts can sign in here.');
         return;
       }
