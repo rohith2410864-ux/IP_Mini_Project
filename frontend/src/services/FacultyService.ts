@@ -3,18 +3,18 @@ import type { FacultyRegisterPayload, LoginResponse } from '../types/models';
 
 export const FacultyService = {
   login: async (credentials: { email: string; password: string }): Promise<LoginResponse> => {
-    const response = await facultyApi.post<string>('/faculty/login', credentials);
-    if (response.data !== 'Login Successful') {
-      throw new Error('Invalid faculty credentials');
+    const response = await facultyApi.post<{ token: string }>('/login', credentials);
+    if (!response.data?.token) {
+      throw new Error('Invalid login response');
     }
     return {
-      token: `faculty:${credentials.email}`,
+      token: response.data.token,
       user: { role: 'admin' as const, email: credentials.email } // example
     };
   },
 
   register: async (facultyData: FacultyRegisterPayload) => {
-    const response = await facultyApi.post<FacultyRegisterPayload>('/faculty/register', facultyData);
+    const response = await facultyApi.post<FacultyRegisterPayload>('/register', facultyData);
     return response.data;
   }
 };

@@ -3,29 +3,27 @@ import type { Event, Registration } from '../types/models';
 
 export const EventService = {
   getEventById: async (id: string) => {
-    const response = await eventApi.get<Event>(`/event/${id}`);
+    const response = await eventApi.get<Event>(`/events/${id}`);
     return response.data;
   },
 
   getAllEvents: async () => {
-    // Assuming a generic GET /event endpoint exists, adjust as needed. 
-    // Wait, the backend EventController has /event/month/{month} and /event/student/{rollNumber}
-    const response = await eventApi.get<Event[]>('/event/all');
+    const response = await eventApi.get<Event[]>('/events');
     return response.data;
   },
 
   addEvent: async (eventData: Partial<Event>) => {
-    const response = await eventApi.post<Event>('/event/add', eventData);
+    const response = await eventApi.post<Event>('/events', eventData);
     return response.data;
   },
 
   updateEvent: async (id: string, eventData: Partial<Event>) => {
-    const response = await eventApi.put<string>(`/event/update/${id}`, eventData);
+    const response = await eventApi.put<string>(`/events/${id}`, eventData);
     return response.data;
   },
 
   deleteEvent: async (id: string, facultyId: string) => {
-    const response = await eventApi.delete<string>(`/event/delete/${id}/${facultyId}`);
+    const response = await eventApi.delete<string>(`/events/${id}/${facultyId}`);
     return response.data;
   },
 
