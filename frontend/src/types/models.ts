@@ -12,13 +12,13 @@ export type AuthUser = {
 export type AdminCredentials = { email: string; password: string };
 export type UserCredentials = { email: string; password: string };
 export type StudentRegisterPayload = {
-  rollNumber: string;
+  id: string;
   name: string;
   email: string;
   password: string;
 };
 export type FacultyRegisterPayload = {
-  facultyId: string;
+  id: string;
   facultyName: string;
   email: string;
   password: string;
@@ -61,7 +61,7 @@ export type EventStatus = 'open' | 'closed' | 'postponed' | string;
 export type EventType = 'common' | 'department';
 
 export type Event = {
-  _id: string;
+  id: string;
   title: string;
   description: string;
   type: EventType;
@@ -96,9 +96,9 @@ export type RegistrationResponse = { label: string; answer: string };
 export type RegistrationAttendanceStatus = 'present' | 'pending' | 'absent' | string;
 
 export type Registration = {
-  _id: string;
+  id: string;
   eventId: Event;
-  userId?: AuthUser & { _id?: string };
+  userId?: AuthUser & { id?: string };
   attendanceStatus: RegistrationAttendanceStatus;
   responses?: RegistrationResponse[];
 };

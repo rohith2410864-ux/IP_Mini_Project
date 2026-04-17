@@ -9,7 +9,7 @@ import type { FacultyRegisterPayload } from '../types/models';
 const AdminRegisterPage = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState<FacultyRegisterPayload>({
-    facultyId: '',
+    id: '',
     facultyName: '',
     email: '',
     password: '',
@@ -43,10 +43,10 @@ const AdminRegisterPage = () => {
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            name="facultyId"
+            name="id"
             placeholder="Faculty ID"
-            value={form.facultyId}
-            onChange={(e) => setForm((prev) => ({ ...prev, facultyId: e.target.value }))}
+            value={form.id}
+            onChange={(e) => setForm((prev) => ({ ...prev, id: e.target.value }))}
             required
           />
           <input

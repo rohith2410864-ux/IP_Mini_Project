@@ -53,8 +53,6 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     void loadData();
-    const interval = window.setInterval(loadData, 10000);
-    return () => window.clearInterval(interval);
   }, [loadData]);
 
   const handleSelectEvent = (event: { id: string }): void => {
@@ -62,7 +60,7 @@ const AdminDashboard = () => {
   };
 
   const calendarEvents: CalendarEvent[] = events.map((event) => ({
-    id: event._id,
+    id: event.id,
     title: event.title,
     start: new Date(event.startDate),
     end: new Date(event.startDate),

@@ -47,9 +47,21 @@ public class EventController {
         return service.updateEvent(id, event);
     }
 
-    @DeleteMapping("/events/{id}/{facultyId}")
-    public String deleteEvent(@PathVariable String id, @PathVariable String facultyId) {
-        return service.deleteEvent(id, facultyId);
+    @DeleteMapping("/events/{id}")
+    public ResponseEntity<?> deleteEvent(
+        @PathVariable String id,
+        @RequestHeader(value = "Authorization", required = false) String authHeader
+    ) {
+        String role = extractRoleFromToken(authHeader);
+        if (!"admin".equals(role) && !"faculty".equals(role)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "Unauthorized to delete"));
+        }
+        Optional<EventModel> existing = service.getById(id);
+        if (existing.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("message", "Event not found"));
+        }
+        service.deleteEventById(id);
+        return ResponseEntity.ok(Map.of("message", "Deleted Successfully"));
     }
 
     // Compatibility endpoints for frontend routes
@@ -159,41 +171,23 @@ public class EventController {
         return ResponseEntity.ok(Map.of("message", "Withdrawn successfully"));
     }
 
-    private String extractEmailFromToken(String authHeader) {
+    private Map<String, Object> extractTokenPayload(String authHeader) {
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             return null;
         }
-        String sub = decodeClaim(authHeader.substring(7), "sub");
-        if (sub == null || sub.isBlank()) {
-            return null;
-        }
-        return sub;
+        return com.ecom.eventservice.util.JwtUtil.validateAndExtractPayload(authHeader.substring(7));
+    }
+
+    private String extractEmailFromToken(String authHeader) {
+        Map<String, Object> payload = extractTokenPayload(authHeader);
+        if (payload == null || !payload.containsKey("sub")) return null;
+        return String.valueOf(payload.get("sub"));
     }
 
     private String extractRoleFromToken(String authHeader) {
-        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            return "";
-        }
-        String role = decodeClaim(authHeader.substring(7), "role");
-        return role == null ? "" : role;
-    }
-
-    private String decodeClaim(String token, String claim) {
-        try {
-            String[] parts = token.split("\\.");
-            if (parts.length < 2) return null;
-            byte[] decoded = Base64.getUrlDecoder().decode(parts[1]);
-            String payload = new String(decoded);
-            String key = "\"" + claim + "\":\"";
-            int start = payload.indexOf(key);
-            if (start < 0) return null;
-            int valueStart = start + key.length();
-            int valueEnd = payload.indexOf("\"", valueStart);
-            if (valueEnd < 0) return null;
-            return payload.substring(valueStart, valueEnd);
-        } catch (Exception ex) {
-            return null;
-        }
+        Map<String, Object> payload = extractTokenPayload(authHeader);
+        if (payload == null || !payload.containsKey("role")) return "";
+        return String.valueOf(payload.get("role"));
     }
 
     private Map<String, Object> toRegistrationView(RegistrationModel row) {

@@ -46,9 +46,9 @@ const UserDashboard = () => {
     void loadData();
   }, [loadData]);
 
-  const registeredEventIds = useMemo(() => registrations.map((reg) => reg.eventId._id), [registrations]);
+  const registeredEventIds = useMemo(() => registrations.map((reg) => reg.eventId?.id), [registrations]);
 
-  const availableEvents = useMemo(() => events.filter((event) => !registeredEventIds.includes(event._id)), [events, registeredEventIds]);
+  const availableEvents = useMemo(() => events.filter((event) => !registeredEventIds.includes(event.id)), [events, registeredEventIds]);
 
   const calendarEvents: FullCalendarEvent[] = events
     .map((event) => {
@@ -56,7 +56,7 @@ const UserDashboard = () => {
       return (
         start
           ? {
-              id: event._id,
+              id: event.id,
               title: event.title,
               start,
               backgroundColor: event.category === 'Department' ? '#f59e0b' : '#3b82f6',
@@ -88,7 +88,7 @@ const UserDashboard = () => {
       <div className="stats-grid-responsive">
         <div
           className="stat-card-custom shadow-sm"
-          onClick={() => (nextEvent ? navigate(`/user/events/${nextEvent._id}`) : navigate('/user/events'))}
+          onClick={() => (nextEvent ? navigate(`/user/events/${nextEvent.id}`) : navigate('/user/events'))}
           style={{ cursor: 'pointer' }}
         >
           <div className="stat-icon-wrapper blue-bg">
@@ -176,9 +176,9 @@ const UserDashboard = () => {
                 <div className="event-title-list">
                   {availableEvents.map((ev) => (
                     <div
-                      key={ev._id}
+                      key={ev.id}
                       className="clickable-list-item"
-                      onClick={() => navigate(`/user/events/${ev._id}`)}
+                      onClick={() => navigate(`/user/events/${ev.id}`)}
                     >
                       <div>
                         <div className="item-title">{ev.title}</div>
@@ -218,9 +218,9 @@ const UserDashboard = () => {
                 <div className="event-title-list">
                   {registrations.map((reg) => (
                     <div
-                      key={reg._id}
+                      key={reg.id}
                       className="clickable-list-item"
-                      onClick={() => navigate(`/user/events/${reg.eventId._id}`)}
+                      onClick={() => navigate(`/user/events/${reg.eventId?.id}`)}
                     >
                       <div>
                         <div className="item-title">{reg.eventId.title}</div>

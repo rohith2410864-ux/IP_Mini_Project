@@ -40,9 +40,9 @@ const ViewParticipants = () => {
     for (const r of registrations) {
       const eventObj = r.eventId;
       // Added safety check for eventObj existence
-      if (eventObj && typeof eventObj === 'object' && eventObj._id) {
-        if (!map[eventObj._id]) {
-          map[eventObj._id] = eventObj;
+      if (eventObj && typeof eventObj === 'object' && eventObj.id) {
+        if (!map[eventObj.id]) {
+          map[eventObj.id] = eventObj;
         }
       }
     }
@@ -72,9 +72,8 @@ const ViewParticipants = () => {
   const participants: Registration[] = useMemo(() => {
     return registrations
       .filter((r) => {
-        // FIXED: Added optional chaining to r.eventId?._id
-        const regEventId = r.eventId?._id;
-        return selectedEvent ? regEventId === selectedEvent._id : false;
+        const regEventId = r.eventId?.id;
+        return selectedEvent ? regEventId === selectedEvent.id : false;
       })
       .filter((r) => {
         const name = r.userId?.name?.toLowerCase() || '';
@@ -168,7 +167,7 @@ const ViewParticipants = () => {
           <div style={listWrapper}>
             {filteredEvents.length > 0 ? (
               filteredEvents.map((event) => (
-                <div key={event._id} style={listRow}>
+                <div key={event.id} style={listRow}>
                   <div style={rowLeft}>
                     {event.posterUrl ? (
                       <img src={event.posterUrl} alt="Poster" style={rowThumb} />
@@ -238,7 +237,7 @@ const ViewParticipants = () => {
                       }}
                     >
                       {/* FIXED: Added optional chaining here to prevent the crash at line 239/236 */}
-                      {registrations.filter((r) => r.eventId?._id === event._id).length} Registered
+                      {registrations.filter((r) => r.eventId?.id === event.id).length} Registered
                     </span>
                     <button onClick={() => setSelectedEvent(event)} style={selectBtn}>
                       View Participants
@@ -310,7 +309,7 @@ const ViewParticipants = () => {
               </thead>
               <tbody>
                 {participants.map((p) => (
-                  <tr key={p._id} style={tr}>
+                  <tr key={p.id} style={tr}>
                     <td style={tdName}>{p.userId?.name || 'Unknown'}</td>
                     <td style={td}>{p.userId?.department || 'N/A'}</td>
                     <td style={td}>{p.userId?.email || 'N/A'}</td>

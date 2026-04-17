@@ -19,7 +19,7 @@ public class StudentController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody StudentModel student) {
-        if (student.getEmail() == null || student.getPassword() == null || student.getRollNumber() == null) {
+        if (student.getEmail() == null || student.getPassword() == null || student.getId() == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Missing required fields");
         }
         if (service.existsByEmail(student.getEmail())) {

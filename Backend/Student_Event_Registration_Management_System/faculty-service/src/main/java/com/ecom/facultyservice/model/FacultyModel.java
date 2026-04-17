@@ -7,13 +7,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class FacultyModel {
 
     @Id
-    private String facultyId;
+    private String id;
     private String facultyName;
     private String email;
     private String password;
 
-    public String getFacultyId() { return facultyId; }
-    public void setFacultyId(String facultyId) { this.facultyId = facultyId; }
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
 
     public String getFacultyName() { return facultyName; }
     public void setFacultyName(String facultyName) { this.facultyName = facultyName; }

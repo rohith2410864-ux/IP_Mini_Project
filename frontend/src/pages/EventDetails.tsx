@@ -58,7 +58,7 @@ const EventDetails = () => {
         }
         
         const myRegs = await api.get('/events/my-registrations');
-        if (myRegs.data.find((r: any) => r.eventId._id === id)) setIsRegistered(true);
+        if (myRegs.data.find((r: any) => r.eventId?.id === id)) setIsRegistered(true);
       } catch (e: any) { 
         console.error(e); 
       } finally { 
@@ -235,7 +235,7 @@ const EventDetails = () => {
         const amount = Number(event.amount);
         const orderRes = await api.post(`/payments/create-order`, { 
           amount: amount,
-          eventId: event._id 
+          eventId: event.id
         });
         
         initializeRazorpay(orderRes.data);

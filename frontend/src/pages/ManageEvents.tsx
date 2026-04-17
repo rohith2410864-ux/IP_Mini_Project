@@ -262,7 +262,7 @@ const ManageEvents = () => {
 
   const handleEdit = (event: any, e: any) => {
     if (e) e.stopPropagation();
-    setEditId(event._id);
+    setEditId(event.id);
     setForm({
       ...event,
       departments: event.departments || [],
@@ -698,7 +698,7 @@ const ManageEvents = () => {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
         {filteredEvents.map(event => (
           <div
-            key={event._id}
+            key={event.id}
             className="event-card-horizontal"
             onClick={() => setSelectedEvent(event)}
             style={{
@@ -756,7 +756,7 @@ const ManageEvents = () => {
 
             <div style={{ display: 'flex', gap: '10px' }}>
               <button onClick={(e) => handleEdit(event, e)} style={{ padding: '8px 15px', background: '#f1f5f9', border: '1px solid #cbd5e1', borderRadius: '6px', cursor: 'pointer' }}>Edit</button>
-              <button onClick={(e) => handleDelete(event._id, e)} style={{ padding: '8px 15px', background: '#fee2e2', color: '#b91c1c', border: 'none', borderRadius: '6px', cursor: 'pointer' }}>Delete</button>
+              <button onClick={(e) => handleDelete(event.id, e)} style={{ padding: '8px 15px', background: '#fee2e2', color: '#b91c1c', border: 'none', borderRadius: '6px', cursor: 'pointer' }}>Delete</button>
             </div>
           </div>
         ))}

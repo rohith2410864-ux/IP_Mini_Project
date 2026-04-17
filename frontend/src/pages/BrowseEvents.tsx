@@ -323,7 +323,7 @@ const BrowseEvents = () => {
           {filtered.length > 0 ? (
             filtered.map((ev) => (
               <div
-                key={ev._id}
+                key={ev.id}
                 style={{
                   display: 'flex',
                   background: '#fff',
@@ -335,7 +335,7 @@ const BrowseEvents = () => {
                   minHeight: '160px',
                   transition: 'box-shadow 0.2s, transform 0.2s',
                 }}
-                onClick={() => navigate(`/user/events/${ev._id}`)}
+                onClick={() => navigate(`/user/events/${ev.id}`)}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.boxShadow = '0 8px 16px rgba(0,0,0,0.05)';
                   e.currentTarget.style.transform = 'translateY(-2px)';
@@ -534,7 +534,7 @@ const BrowseEvents = () => {
                       }}
                       onClick={(e) => {
                         e.stopPropagation();
-                        navigate(`/user/events/${ev._id}`);
+                        navigate(`/user/events/${ev.id}`);
                       }}
                     >
                       View Details →

@@ -7,13 +7,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class StudentModel {
 
     @Id
-    private String rollNumber;
+    private String id;
     private String name;
     private String email;
     private String password;
 
-    public String getRollNumber() { return rollNumber; }
-    public void setRollNumber(String rollNumber) { this.rollNumber = rollNumber; }
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }

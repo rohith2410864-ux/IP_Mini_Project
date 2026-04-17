@@ -32,7 +32,7 @@ const MyRegistrations = () => {
     try {
       await api.delete(`/events/${eventId}/withdraw`);
       alert('Successfully withdrawn.');
-      setRegistrations((prev) => prev.filter((reg) => reg.eventId._id !== eventId));
+      setRegistrations((prev) => prev.filter((reg) => reg.eventId?.id !== eventId));
     } catch (err: unknown) {
       const message =
         (err as { response?: { data?: { message?: string } } })?.response?.data?.message ??
@@ -54,7 +54,7 @@ const MyRegistrations = () => {
         {registrations.length > 0 ? (
           registrations.map((reg) => (
             <div
-              key={reg._id}
+              key={reg.id}
               style={{
                 display: 'flex',
                 background: '#fff',
@@ -96,7 +96,7 @@ const MyRegistrations = () => {
                   <button
                     className="btn-secondary"
                     style={{ color: '#dc2626', borderColor: '#fca5a5' }}
-                    onClick={() => handleWithdraw(reg.eventId._id, reg.eventId.title)}
+                    onClick={() => handleWithdraw(reg.eventId?.id, reg.eventId.title)}
                   >
                     Withdraw from Event
                   </button>

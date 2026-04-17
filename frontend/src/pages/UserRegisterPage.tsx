@@ -9,7 +9,7 @@ import type { StudentRegisterPayload } from '../types/models';
 const UserRegisterPage = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState<StudentRegisterPayload>({
-    rollNumber: '',
+    id: '',
     name: '',
     email: '',
     password: '',
@@ -43,10 +43,10 @@ const UserRegisterPage = () => {
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            name="rollNumber"
+            name="id"
             placeholder="Roll Number"
-            value={form.rollNumber}
-            onChange={(e) => setForm((prev) => ({ ...prev, rollNumber: e.target.value }))}
+            value={form.id}
+            onChange={(e) => setForm((prev) => ({ ...prev, id: e.target.value }))}
             required
           />
           <input
