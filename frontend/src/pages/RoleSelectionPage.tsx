@@ -28,14 +28,7 @@ const RoleSelectionPage = () => {
           </button>
         </div>
 
-        <div style={{ marginTop: '14px', display: 'flex', gap: '10px', justifyContent: 'center' }}>
-          <button type="button" className="login-type-btn secondary" onClick={() => navigate('/admin/register')}>
-            Faculty Register
-          </button>
-          <button type="button" className="login-type-btn secondary" onClick={() => navigate('/register')}>
-            Student Register
-          </button>
-        </div>
+
       </div>
     </div>
   );
