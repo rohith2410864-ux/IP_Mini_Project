@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.Base64;
 
 import com.ecom.eventservice.model.EventModel;
 import com.ecom.eventservice.model.RegistrationModel;
@@ -17,8 +18,7 @@ import com.ecom.eventservice.service.EventService;
 import com.ecom.eventservice.service.RegistrationService;
 
 @RestController
-@RequestMapping("/event")
-@CrossOrigin(origins = "*")
+@RequestMapping("/api")
 public class EventController {
 
     @Autowired
@@ -27,38 +27,38 @@ public class EventController {
     @Autowired
     private RegistrationService registrationService;
 
-    @PostMapping("/add")
+    @PostMapping("/events")
     public EventModel addEvent(@RequestBody EventModel event) {
         return service.addEvent(event);
     }
 
-    @GetMapping("/month/{month}")
+    @GetMapping("/events/month/{month}")
     public List<EventModel> getByMonth(@PathVariable String month) {
         return service.getByMonth(month);
     }
 
-    @GetMapping("/student/{rollNumber}")
+    @GetMapping("/events/student/{rollNumber}")
     public List<EventModel> getByStudent(@PathVariable String rollNumber) {
         return service.getByStudent(rollNumber);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/events/{id}")
     public String updateEvent(@PathVariable String id, @RequestBody EventModel event) {
         return service.updateEvent(id, event);
     }
 
-    @DeleteMapping("/delete/{id}/{facultyId}")
+    @DeleteMapping("/events/{id}/{facultyId}")
     public String deleteEvent(@PathVariable String id, @PathVariable String facultyId) {
         return service.deleteEvent(id, facultyId);
     }
 
     // Compatibility endpoints for frontend routes
-    @GetMapping("/all")
+    @GetMapping("/events")
     public List<EventModel> getAll() {
         return service.getAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/events/{id}")
     public EventModel getById(@PathVariable String id) {
         return service.getById(id).orElse(null);
     }
@@ -159,51 +159,41 @@ public class EventController {
         return ResponseEntity.ok(Map.of("message", "Withdrawn successfully"));
     }
 
-    @GetMapping("/events")
-    public List<EventModel> listEventsCompat() {
-        return service.getAll();
-    }
-
-    @GetMapping("/events/{id}")
-    public EventModel getEventCompat(@PathVariable String id) {
-        return service.getById(id).orElse(null);
-    }
-
-    @PostMapping("/events")
-    public EventModel createEventCompat(@RequestBody EventModel event) {
-        return service.addEvent(event);
-    }
-
-    @PutMapping("/events/{id}")
-    public EventModel updateEventCompat(@PathVariable String id, @RequestBody EventModel event) {
-        return service.updateEventById(id, event);
-    }
-
-    @DeleteMapping("/events/{id}")
-    public Map<String, String> deleteEventCompat(@PathVariable String id) {
-        service.deleteEventById(id);
-        return Map.of("message", "Deleted Successfully");
-    }
-
     private String extractEmailFromToken(String authHeader) {
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             return null;
         }
-        String token = authHeader.substring(7);
-        String[] parts = token.split(":", 2);
-        if (parts.length != 2 || parts[1].isBlank()) {
+        String sub = decodeClaim(authHeader.substring(7), "sub");
+        if (sub == null || sub.isBlank()) {
             return null;
         }
-        return parts[1];
+        return sub;
     }
 
     private String extractRoleFromToken(String authHeader) {
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             return "";
         }
-        String token = authHeader.substring(7);
-        String[] parts = token.split(":", 2);
-        return parts.length > 0 ? parts[0] : "";
+        String role = decodeClaim(authHeader.substring(7), "role");
+        return role == null ? "" : role;
+    }
+
+    private String decodeClaim(String token, String claim) {
+        try {
+            String[] parts = token.split("\\.");
+            if (parts.length < 2) return null;
+            byte[] decoded = Base64.getUrlDecoder().decode(parts[1]);
+            String payload = new String(decoded);
+            String key = "\"" + claim + "\":\"";
+            int start = payload.indexOf(key);
+            if (start < 0) return null;
+            int valueStart = start + key.length();
+            int valueEnd = payload.indexOf("\"", valueStart);
+            if (valueEnd < 0) return null;
+            return payload.substring(valueStart, valueEnd);
+        } catch (Exception ex) {
+            return null;
+        }
     }
 
     private Map<String, Object> toRegistrationView(RegistrationModel row) {

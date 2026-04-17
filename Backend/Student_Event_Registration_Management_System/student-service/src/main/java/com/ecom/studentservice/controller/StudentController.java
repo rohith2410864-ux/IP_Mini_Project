@@ -6,10 +6,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.ecom.studentservice.model.StudentModel;
 import com.ecom.studentservice.service.StudentService;
+import com.ecom.studentservice.util.JwtUtil;
+
+import java.util.Map;
 
 @RestController
-@RequestMapping("/student")
-@CrossOrigin(origins = "*")
+@RequestMapping("/api")
 public class StudentController {
 
     @Autowired
@@ -27,11 +29,12 @@ public class StudentController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody StudentModel student) {
+    public ResponseEntity<?> login(@RequestBody StudentModel student) {
         String result = service.login(student);
         if ("Login Successful".equals(result)) {
-            return ResponseEntity.ok(result);
+            String token = JwtUtil.generateToken(student.getEmail(), "user");
+            return ResponseEntity.ok(Map.of("token", token));
         }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(result);
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", result));
     }
 }

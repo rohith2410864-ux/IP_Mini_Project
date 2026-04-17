@@ -6,10 +6,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.ecom.facultyservice.model.FacultyModel;
 import com.ecom.facultyservice.service.FacultyService;
+import com.ecom.facultyservice.util.JwtUtil;
+
+import java.util.Map;
 
 @RestController
-@RequestMapping("/faculty")
-@CrossOrigin(origins = "*")
+@RequestMapping("/api")
 public class FacultyController {
 
     @Autowired
@@ -27,11 +29,12 @@ public class FacultyController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody FacultyModel faculty) {
+    public ResponseEntity<?> login(@RequestBody FacultyModel faculty) {
         String result = service.login(faculty);
         if ("Login Successful".equals(result)) {
-            return ResponseEntity.ok(result);
+            String token = JwtUtil.generateToken(faculty.getEmail(), "admin");
+            return ResponseEntity.ok(Map.of("token", token));
         }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(result);
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", result));
     }
 }
