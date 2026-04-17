@@ -103,7 +103,7 @@ public class EventController {
         // Calculate department stats (Innovative replacement for Active Depts)
         java.util.Map<String, Long> deptCounts = allRegs.stream()
             .filter(r -> r.getUserDepartment() != null && !r.getUserDepartment().isEmpty())
-            .collect(Collectors.groupingBy(RegistrationModel::getUserDepartment, Collectors.counting()));
+            .collect(java.util.stream.Collectors.groupingBy(RegistrationModel::getUserDepartment, java.util.stream.Collectors.counting()));
         
         List<Map<String, Object>> deptStats = deptCounts.entrySet().stream()
             .map(e -> {
@@ -112,7 +112,7 @@ public class EventController {
                 m.put("count", e.getValue());
                 return m;
             })
-            .collect(Collectors.toList());
+            .collect(java.util.stream.Collectors.toList());
 
         // Innovative Field: Spotlight Event (Top event by registrations)
         String topEvent = allEvents.stream()
