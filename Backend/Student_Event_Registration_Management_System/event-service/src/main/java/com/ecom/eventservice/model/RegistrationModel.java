@@ -8,6 +8,7 @@ import java.util.List;
 @Document(collection = "registrations")
 public class RegistrationModel {
     @Id
+    @com.fasterxml.jackson.annotation.JsonProperty("id")
     private String id;
     private String eventId;
     private String userEmail;

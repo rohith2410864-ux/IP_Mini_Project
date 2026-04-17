@@ -10,6 +10,7 @@ import java.util.Map;
 public class EventModel {
 
     @Id
+    @com.fasterxml.jackson.annotation.JsonProperty("id")
     private String id;
     private String title;
     private String venue;

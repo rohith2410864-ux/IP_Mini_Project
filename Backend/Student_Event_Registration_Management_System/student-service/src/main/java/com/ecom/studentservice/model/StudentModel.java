@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class StudentModel {
 
     @Id
+    @com.fasterxml.jackson.annotation.JsonProperty("id")
     private String id;
     private String name;
     private String email;

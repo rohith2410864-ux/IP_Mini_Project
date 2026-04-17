@@ -32,7 +32,7 @@ public class FacultyController {
     public ResponseEntity<?> login(@RequestBody FacultyModel faculty) {
         String result = service.login(faculty);
         if ("Login Successful".equals(result)) {
-            String token = JwtUtil.generateToken(faculty.getEmail(), "admin");
+            String token = JwtUtil.generateToken(faculty.getEmail(), "faculty");
             return ResponseEntity.ok(Map.of("token", token));
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", result));

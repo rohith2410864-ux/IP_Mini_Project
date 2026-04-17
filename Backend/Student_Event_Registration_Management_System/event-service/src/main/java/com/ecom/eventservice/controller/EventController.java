@@ -43,8 +43,26 @@ public class EventController {
     }
 
     @PutMapping("/events/{id}")
-    public String updateEvent(@PathVariable String id, @RequestBody EventModel event) {
-        return service.updateEvent(id, event);
+    public ResponseEntity<?> updateEvent(
+        @PathVariable String id, 
+        @RequestBody EventModel event,
+        @RequestHeader(value = "Authorization", required = false) String authHeader
+    ) {
+        String role = extractRoleFromToken(authHeader);
+        if (!"admin".equals(role) && !"faculty".equals(role)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", "Unauthorized to update"));
+        }
+        
+        Optional<EventModel> existing = service.getById(id);
+        if (existing.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("message", "Event not found"));
+        }
+
+        // If faculty, verify they own the event (optional, depending on requirements)
+        // For now, allow any admin/faculty to update since the system is small
+        
+        EventModel updated = service.updateEventById(id, event);
+        return ResponseEntity.ok(updated);
     }
 
     @DeleteMapping("/events/{id}")
@@ -192,7 +210,7 @@ public class EventController {
 
     private Map<String, Object> toRegistrationView(RegistrationModel row) {
         Map<String, Object> view = new HashMap<>();
-        view.put("_id", row.getId());
+        view.put("id", row.getId());
         Optional<EventModel> event = service.getById(row.getEventId());
         view.put("eventId", event.orElse(null));
         Map<String, Object> user = new HashMap<>();

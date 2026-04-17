@@ -32,7 +32,7 @@ public class StudentController {
     public ResponseEntity<?> login(@RequestBody StudentModel student) {
         String result = service.login(student);
         if ("Login Successful".equals(result)) {
-            String token = JwtUtil.generateToken(student.getEmail(), "user");
+            String token = JwtUtil.generateToken(student.getEmail(), "student");
             return ResponseEntity.ok(Map.of("token", token));
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("message", result));

@@ -9,7 +9,7 @@ export const StudentService = {
     }
     return {
       token: response.data.token,
-      user: { role: 'user' as const, email: credentials.email, department: 'CSE' } // Example mapping
+      user: { role: 'student' as const, email: credentials.email, department: 'CSE' } // match backend role
     };
   },
 

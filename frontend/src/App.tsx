@@ -34,7 +34,7 @@ const App = () => {
       <Route
         path="/admin"
         element={
-          <ProtectedRoute allowedRoles={['admin'] as Role[]} loginPath="/admin/login">
+          <ProtectedRoute allowedRoles={['admin', 'faculty'] as Role[]} loginPath="/admin/login">
             <AdminLayout />
           </ProtectedRoute>
         }
@@ -47,7 +47,7 @@ const App = () => {
       <Route
         path="/user"
         element={
-          <ProtectedRoute allowedRoles={['user'] as Role[]} loginPath="/login">
+          <ProtectedRoute allowedRoles={['user', 'student'] as Role[]} loginPath="/login">
             <UserLayout />
           </ProtectedRoute>
         }

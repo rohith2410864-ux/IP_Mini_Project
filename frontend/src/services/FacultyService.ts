@@ -9,7 +9,7 @@ export const FacultyService = {
     }
     return {
       token: response.data.token,
-      user: { role: 'admin' as const, email: credentials.email } // example
+      user: { role: 'faculty' as const, email: credentials.email } // match backend role
     };
   },
 
