@@ -109,11 +109,15 @@ const AdminDashboard = () => {
         </div>
 
         <div className="stat-card glass-effect clickable" onClick={() => setShowDeptModal(true)}>
-          <div className="stat-icon orange">🏢</div>
-          <div className="stat-info">
-            <span className="stat-label">Active Depts</span>
-            <h2 className="stat-value">{stats?.departmentParticipation?.length || 0}</h2>
-            <span className="stat-subtext">Tap to view details</span>
+          <div className="stat-icon orange">🔥</div>
+          <div className="stat-info" style={{ maxWidth: '180px' }}>
+            <span className="stat-label">Spotlight Event</span>
+            <h2 className="stat-value" style={{ fontSize: '1.2rem', margin: '5px 0', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              {stats?.topEvent || 'N/A'}
+            </h2>
+            <span className="stat-subtext" style={{ fontSize: '11px', color: '#f59e0b', fontWeight: 'bold' }}>
+              {stats?.engagementScore || '0'} Avg Engagement
+            </span>
           </div>
         </div>
       </div>
@@ -157,7 +161,7 @@ const AdminDashboard = () => {
               className="modal-header"
               style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}
             >
-              <h3 style={{ margin: 0 }}>Department Stats</h3>
+              <h3 style={{ margin: 0 }}>Engagement Breakdown</h3>
               <button
                 onClick={() => setShowDeptModal(false)}
                 style={{ background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer' }}

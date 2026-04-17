@@ -90,6 +90,8 @@ export type AdminStats = {
   totalEvents: number;
   totalParticipants: number;
   departmentParticipation?: Array<{ department: string; count: number }>;
+  topEvent?: string;
+  engagementScore?: string;
 };
 
 export type RegistrationResponse = { label: string; answer: string };

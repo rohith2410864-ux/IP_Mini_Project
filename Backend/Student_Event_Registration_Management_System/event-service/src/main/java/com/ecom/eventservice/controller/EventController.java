@@ -95,11 +95,44 @@ public class EventController {
 
     @GetMapping("/admin/dashboard/stats")
     public Map<String, Object> getAdminStats() {
-        return Map.of(
-            "totalEvents", service.getAll().size(),
-            "totalParticipants", 0,
-            "departmentParticipation", Collections.emptyList()
-        );
+        List<EventModel> allEvents = service.getAll();
+        List<RegistrationModel> allRegs = registrationService.getAll();
+        
+        // Calculate department stats (Innovative replacement for Active Depts)
+        java.util.Map<String, Long> deptCounts = allRegs.stream()
+            .filter(r -> r.getUserDepartment() != null && !r.getUserDepartment().isEmpty())
+            .collect(Collectors.groupingBy(RegistrationModel::getUserDepartment, Collectors.counting()));
+        
+        List<Map<String, Object>> deptStats = deptCounts.entrySet().stream()
+            .map(e -> {
+                Map<String, Object> m = new HashMap<>();
+                m.put("department", e.getKey());
+                m.put("count", e.getValue());
+                return m;
+            })
+            .collect(Collectors.toList());
+
+        // Innovative Field: Spotlight Event (Top event by registrations)
+        String topEvent = allEvents.stream()
+            .max((e1, e2) -> {
+                long c1 = allRegs.stream().filter(r -> r.getEventId().equals(e1.getId())).count();
+                long c2 = allRegs.stream().filter(r -> r.getEventId().equals(e2.getId())).count();
+                return Long.compare(c1, c2);
+            })
+            .map(EventModel::getTitle)
+            .orElse("No events yet");
+
+        // Innovative Field: Engagement Score (Avg participants per event)
+        double score = allEvents.isEmpty() ? 0 : (double)allRegs.size() / allEvents.size();
+
+        Map<String, Object> stats = new HashMap<>();
+        stats.put("totalEvents", allEvents.size());
+        stats.put("totalParticipants", allRegs.size());
+        stats.put("departmentParticipation", deptStats);
+        stats.put("topEvent", topEvent);
+        stats.put("engagementScore", String.format("%.1f", score));
+        
+        return stats;
     }
 
     @GetMapping("/events/my-registrations")
